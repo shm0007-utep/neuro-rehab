@@ -1,0 +1,66 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+env/
+venv/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Compiled Python files and C extensions
+*.so
+*.pyd
+
+# Cache files
+*.cache
+*.mypy_cache/
+*.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Distribution/build folders
+build/
+dist/
+*.egg-info/
+.eggs/
+
+#data folders
+data/
+# Test output
+.tox/
+.nox/
+.pytest_cache/
+
+# Documentation build
+docs/_build/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+
+# Jupyter Notebook temporary files
+*.ipynb_temp
