@@ -5,6 +5,7 @@ import os
 import base64
 import requests
 import os
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -55,9 +56,13 @@ except OSError:
 
 # frame 
 currentframe = 0
-#fps = cam.get(cv2.CAP_PROP_FPS)
-fps = 30
-while(currentframe <  60000): 
+fps = cam.get(cv2.CAP_PROP_FPS)
+frame_count = int(cam.get(cv2.CAP_PROP_FRAME_COUNT))
+total_count = 10
+if len(sys.argv)>1:
+	total_count = int(sys.argv[1])
+print(f"fps {fps} frame count {frame_count}")
+while(currentframe <  frame_count): 
 	
 	# reading from frame 
 	ret,frame = cam.read() 
@@ -65,7 +70,7 @@ while(currentframe <  60000):
 	if ret : 
 		currentframe += 1
 
-		if currentframe % (fps*30) != 0:
+		if currentframe % int(frame_count / total_count) != 0:
 			continue
 
 		name = './cv' + str(currentframe) + '.jpg'
@@ -124,6 +129,8 @@ summary_payload = {
 			],
 			"max_tokens": 300
 		}
-response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers,: json=summary_payload)
+response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=summary_payload)
 response_json = response.json()
 print(response_json)
+
+
