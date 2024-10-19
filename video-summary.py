@@ -107,7 +107,7 @@ while(currentframe <  60000):
 # Release all space and windows once done 
 cam.release() 
 cv2.destroyAllWindows() 
-summary_prompt = "I have descriptions of some screenshots of a video at some intervals in cronological order. Surmmarize them in a single paragraph:"+ ' '.join(f'{i+1}. {item}' for i, item in enumerate(messages))
+summary_prompt = "I have descriptions of some screenshots of a video at some intervals in cronological order. Surmmarize them in a single paragraph to give me an idea about the video. Desctiptions are: "+ ' '.join(f'{i+1}. {item}' for i, item in enumerate(messages))
 print(summary_prompt)
 summary_payload = {
 			"model": "gpt-4o-mini",
@@ -124,7 +124,7 @@ summary_payload = {
 			],
 			"max_tokens": 300
 		}
-response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=summary_payload)
+response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers,: json=summary_payload)
 response_json = response.json()
 print(response_json)
 

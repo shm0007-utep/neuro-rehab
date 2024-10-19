@@ -3,9 +3,17 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 # Read the accelerometer data from the CSV file
-file_path = 'data/demo.csv'
-df = pd.read_csv(file_path)
+file_path = 'data/acc_data.csv'
 
+#df = pd.read_csv(file_path)
+df = pd.DataFrame()
+
+# Process the file in chunks
+chunk_size = 10000
+for chunk in pd.read_csv(file_path, chunksize=chunk_size,skiprows=6):
+    chunk['Timestamp UTC'] = pd.to_datetime(chunk['Timestamp UTC'])
+    # Concatenate the chunks
+    df = pd.concat([df, chunk])
 # Assuming the columns are named 'time', 'x', 'y', and 'z'
 time = df['Timestamp UTC']
 x = df['Accelerometer X']
