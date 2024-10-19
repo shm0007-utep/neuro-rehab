@@ -14,12 +14,12 @@ for chunk in pd.read_csv(file_path, chunksize=chunk_size,skiprows=6):
     chunk['Timestamp UTC'] = pd.to_datetime(chunk['Timestamp UTC'])
     # Concatenate the chunks
     df = pd.concat([df, chunk])
-# Assuming the columns are named 'time', 'x', 'y', and 'z'
+
 time = df['Timestamp UTC']
 x = df['Accelerometer X']
 y = df['Accelerometer Y']
 z = df['Accelerometer Z']
-# Create a plot for the accelerometer data
+
 plt.figure(figsize=(10, 6))
 plt.plot(time, x, label='X-axis', color='red')
 plt.plot(time, y, label='Y-axis', color='green')
